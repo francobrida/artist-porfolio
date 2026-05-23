@@ -1,0 +1,125 @@
+/* 
+  cyber-retro.css
+  Pure CSS effects for the Terminal / CRT layout.
+  Import this into your React project or include it in your HTML.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000000;
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: #00F5D4; /* neon-cyan */
+}
+
+/* EFECTOS DE TEXTO */
+.text-shadow-glow {
+  text-shadow: 0 0 5px #00F5D4, 0 0 10px rgba(0, 245, 212, 0.5);
+}
+.text-shadow-none {
+  text-shadow: none;
+}
+
+/* BORDES ESTILO TERMINAL */
+.terminal-border {
+  border: 1px solid rgba(0, 245, 212, 0.4);
+  background: rgba(0, 245, 212, 0.02);
+  box-shadow: inset 0 0 20px rgba(0, 245, 212, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+/* DECORACIÓN DE ESQUINAS (Corchetes) */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #00F5D4;
+}
+.corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* OVERLAY DE SCANLINES */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.8;
+}
+
+/* EFECTO PARPADEO CRT */
+@keyframes crt-flicker {
+  0%   { opacity: 0.95; }
+  5%   { opacity: 0.85; }
+  10%  { opacity: 0.95; }
+  15%  { opacity: 1;    }
+  50%  { opacity: 0.95; }
+  55%  { opacity: 0.9;  }
+  60%  { opacity: 1;    }
+  100% { opacity: 1;    }
+}
+.crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* GLITCH ANIMADO CONTROLADO (Sin JS) */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #FF2A2A; /* neon-red */
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 #00FFC2; /* neon-green */
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0%   { clip: rect(10px, 9999px, 86px, 0); }
+  20%  { clip: rect(32px, 9999px, 12px, 0); }
+  40%  { clip: rect(87px, 9999px, 54px, 0); }
+  60%  { clip: rect(22px, 9999px, 73px, 0); }
+  80%  { clip: rect(54px, 9999px, 13px, 0); }
+  100% { clip: rect(74px, 9999px, 90px, 0); }
+}
+
+/* ANIMACIÓN PARA BARRAS DE FRECUENCIA */
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.1); }
+  50%      { transform: scaleY(1); }
+}
+.animate-bar {
+  animation: eq-bar 1.2s ease-in-out infinite;
+  transform-origin: bottom;
+}
