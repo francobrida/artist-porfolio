@@ -1,14 +1,90 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './cyber-retro.css';
 import heroImg from './storage/photos/Gemini_Generated_Image_dz0uwfdz0uwfdz0u.png';
 import galleryImg from './storage/photos/IMG_8219.JPG';
 import videoThumbnail from './storage/photos/Gemini_Generated_Image_d0xajqd0xajqd0xa.png';
 
+const translations = {
+  es: {
+    heroSubtitle: "LIVE PERFORMER & PRODUCTOR",
+    aboutTitle: "Sobre mí",
+    originLabel: "Origen",
+    originValue: "Córdoba, Argentina",
+    bpmLabel: "BPM",
+    genresLabel: "Géneros",
+    biographyLabel: "Biografía",
+    bio1: "Franco Brida es músico, productor y live performer. Su propuesta redefine el directo electrónico mediante la colisión entre el Techno contemporáneo y la energía cruda del rock. Diseñado para el riesgo y la improvisación constante, su set hibrida sintetizadores, creación en tiempo real y guitarra eléctrica en vivo.",
+    bio2: "Con una fuerte presencia escénica, Franco utiliza la tecnología para amplificar la expresividad humana en la pista de baile. El resultado es un show de groove visceral, tensión eléctrica y una descarga de energía física directo al pecho, diseñada para el clímax del club.",
+    videosTitle: "Videos",
+    musicTitle: "Música",
+    setupTitle: "Setup Técnico",
+    performanceLabel: "Performance",
+    performanceValue: "LIVE PERFORMANCE HÍBRIDO",
+    setupSubtitle: "ABLETON LIVE + GUITARRA ELÉCTRICA",
+    requirementsLabel: "Requerimientos",
+    reqSpace: "Espacio:",
+    reqSpaceVal: "120cm x 60cm table surface.",
+    reqAudio: "Audio:",
+    reqAudioVal: "2 x Salidas Mono Balanceadas (XLR/TRS).",
+    reqPower: "Alimentación:",
+    reqPowerVal: "2 x enchufes Schuko.",
+    reqMonitor: "Monitoreo:",
+    reqMonitorVal: "Monitor de cabina con control de volumen independiente.",
+    contactTitle: "BOOKING & CONTACTO",
+    contactSubtitle: "Para contrataciones, colaboraciones o consultas."
+  },
+  en: {
+    heroSubtitle: "LIVE PERFORMER & PRODUCER",
+    aboutTitle: "About me",
+    originLabel: "Origin",
+    originValue: "Córdoba, Argentina",
+    bpmLabel: "BPM",
+    genresLabel: "Genres",
+    biographyLabel: "Biography",
+    bio1: "Franco Brida is a musician, producer, and live performer. His proposal redefines the electronic live act through the collision between contemporary Techno and the raw energy of rock. Designed for risk and constant improvisation, his set hybridizes synthesizers, real-time creation, and live electric guitar.",
+    bio2: "With a strong stage presence, Franco uses technology to amplify human expressiveness on the dance floor. The result is a show of visceral groove, electric tension, and a physical energy discharge straight to the chest, designed for the club's climax.",
+    videosTitle: "Videos",
+    musicTitle: "Music",
+    setupTitle: "Technical Setup",
+    performanceLabel: "Performance",
+    performanceValue: "HYBRID LIVE PERFORMANCE",
+    setupSubtitle: "ABLETON LIVE + ELECTRIC GUITAR",
+    requirementsLabel: "Requirements",
+    reqSpace: "Space:",
+    reqSpaceVal: "120cm x 60cm table surface.",
+    reqAudio: "Audio:",
+    reqAudioVal: "2 x Balanced Mono Outputs (XLR/TRS).",
+    reqPower: "Power:",
+    reqPowerVal: "2 x Schuko sockets.",
+    reqMonitor: "Monitoring:",
+    reqMonitorVal: "Booth monitor with independent volume control.",
+    contactTitle: "BOOKING & CONTACT",
+    contactSubtitle: "For bookings, collaborations, or inquiries."
+  }
+};
+
 const LiveTerminal = () => {
+  const [lang, setLang] = useState('es');
+  const t = translations[lang];
+
   return (
     <div className="min-h-screen bg-bg-black text-neon-cyan font-mono relative overflow-x-hidden p-4 md:p-8 flex flex-col selection:bg-neon-cyan selection:text-black pb-20">
       
-
+      {/* LANGUAGE SELECTOR */}
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-50 flex gap-2 terminal-border p-2 bg-black/80">
+        <button 
+          onClick={() => setLang('es')} 
+          className={`px-3 py-1 text-xs tracking-widest uppercase transition-colors ${lang === 'es' ? 'bg-neon-cyan text-black font-bold' : 'text-neon-cyan hover:bg-neon-cyan/20'}`}
+        >
+          ES
+        </button>
+        <button 
+          onClick={() => setLang('en')} 
+          className={`px-3 py-1 text-xs tracking-widest uppercase transition-colors ${lang === 'en' ? 'bg-neon-cyan text-black font-bold' : 'text-neon-cyan hover:bg-neon-cyan/20'}`}
+        >
+          EN
+        </button>
+      </div>
 
       {/* 1. HERO SECTION (Header estilo Mavelpoint) */}
       <section className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center md:items-start pt-10 pb-12 border-b border-neon-cyan/20 min-h-[450px]">
@@ -16,7 +92,7 @@ const LiveTerminal = () => {
          {/* Text Info (Izquierda) */}
          <div className="relative z-20 flex flex-col gap-4 mt-10 md:mt-16 md:w-1/2 w-full">
             <p className="text-neon-green text-xs md:text-sm tracking-widest uppercase">
-              LIVE PERFORMER & PRODUCTOR
+              {t.heroSubtitle}
             </p>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-widest text-shadow-glow glitch-text" data-text="FRANCO BRIDA.">
               FRANCO BRIDA
@@ -72,23 +148,23 @@ const LiveTerminal = () => {
          {/* COLUMNA IZQUIERDA: Sobre mí */}
          <div className="lg:col-span-4 flex flex-col gap-8">
             <h2 className="text-2xl font-bold tracking-widest text-shadow-glow">
-              Sobre mí<span className="text-neon-green">.</span>
+              {t.aboutTitle}<span className="text-neon-green">.</span>
             </h2>
             
             {/* Detalles (Origen, BPM, Géneros) */}
             <div className="flex flex-col gap-6">
               <div className="flex justify-between items-center border-b border-neon-cyan/10 pb-4">
-                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">Origen</span>
-                 <span className="font-bold text-sm tracking-widest text-white">Córdoba, Argentina</span>
+                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">{t.originLabel}</span>
+                 <span className="font-bold text-sm tracking-widest text-white">{t.originValue}</span>
               </div>
               
               <div className="flex justify-between items-center border-b border-neon-cyan/10 pb-4">
-                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">BPM</span>
+                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">{t.bpmLabel}</span>
                  <span className="font-bold text-sm tracking-widest text-white">128 - 135 BPM</span>
               </div>
 
               <div className="flex flex-col gap-4 border-b border-neon-cyan/10 pb-6">
-                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">Géneros</span>
+                 <span className="text-neon-cyan/60 text-xs tracking-widest uppercase">{t.genresLabel}</span>
                  <div className="flex flex-wrap gap-2">
                    <span className="border border-neon-cyan/30 bg-neon-cyan/5 px-3 py-1.5 text-xs hover:bg-neon-cyan hover:text-black cursor-pointer transition-colors">Techno</span>
                    <span className="border border-neon-cyan/30 bg-neon-cyan/5 px-3 py-1.5 text-xs hover:bg-neon-cyan hover:text-black cursor-pointer transition-colors">Peak Time / Driving</span>
@@ -99,13 +175,13 @@ const LiveTerminal = () => {
 
             {/* Biografía (Colapsable visualmente) */}
             <div className="flex justify-between items-center cursor-pointer hover:text-neon-green transition-colors mt-2">
-               <span className="text-xs tracking-widest uppercase font-bold">Biografía</span>
+               <span className="text-xs tracking-widest uppercase font-bold">{t.biographyLabel}</span>
                <span className="border border-current w-6 h-6 flex items-center justify-center text-lg">+</span>
             </div>
             
             <div className="text-sm md:text-base leading-relaxed opacity-80 text-justify mt-2 space-y-4">
-              <p>Franco Brida es músico, productor y live performer. Su propuesta redefine el directo electrónico mediante la colisión entre el Techno contemporáneo y la energía cruda del rock. Diseñado para el riesgo y la improvisación constante, su set hibrida sintetizadores, creación en tiempo real y guitarra eléctrica en vivo.</p>
-              <p>Con una fuerte presencia escénica, Franco utiliza la tecnología para amplificar la expresividad humana en la pista de baile. El resultado es un show de groove visceral, tensión eléctrica y una descarga de energía física directo al pecho, diseñada para el clímax del club.</p>
+              <p>{t.bio1}</p>
+              <p>{t.bio2}</p>
             </div>
          </div>
 
@@ -113,7 +189,7 @@ const LiveTerminal = () => {
          <div className="lg:col-span-8 flex flex-col gap-6">
             <div className="flex justify-between items-end border-b border-transparent lg:border-neon-cyan/10 pb-2">
                <h2 className="text-2xl font-bold tracking-widest text-shadow-glow">
-                 Videos<span className="text-neon-green">.</span>
+                 {t.videosTitle}<span className="text-neon-green">.</span>
                </h2>
             </div>
             
@@ -174,7 +250,6 @@ const LiveTerminal = () => {
             <div className="corner-tl"></div><div className="corner-tr"></div>
             <div className="corner-bl"></div><div className="corner-br"></div>
             
-            <div className="absolute inset-0 bg-neon-cyan/20 mix-blend-color z-10 pointer-events-none"></div>
             <img 
               src={videoThumbnail} 
               alt="Guitar Live Aesthetic" 
@@ -189,7 +264,7 @@ const LiveTerminal = () => {
       <section className="relative z-10 max-w-7xl mx-auto w-full mt-12 mb-12 flex flex-col gap-6">
         <div className="flex justify-between items-end border-b border-neon-cyan/20 pb-2">
            <h2 className="text-2xl font-bold tracking-widest text-shadow-glow">
-             Música<span className="text-neon-green">.</span>
+             {t.musicTitle}<span className="text-neon-green">.</span>
            </h2>
         </div>
         
@@ -229,7 +304,7 @@ const LiveTerminal = () => {
       <section className="relative z-10 max-w-7xl mx-auto w-full mt-24 mb-12 flex flex-col gap-8">
         <div className="flex items-center gap-4 border-b border-neon-cyan/20 pb-4">
           <h2 className="text-2xl font-bold tracking-widest text-shadow-glow">
-            Setup Técnico<span className="text-neon-green">.</span>
+            {t.setupTitle}<span className="text-neon-green">.</span>
           </h2>
         </div>
         
@@ -238,42 +313,42 @@ const LiveTerminal = () => {
           <div className="corner-bl"></div><div className="corner-br"></div>
           
           <div className="flex flex-col gap-4">
-            <h3 className="text-neon-cyan/70 text-xs tracking-widest uppercase font-bold">Performance</h3>
-            <p className="text-xl md:text-2xl font-bold tracking-wider">LIVE PERFORMANCE HÍBRIDO</p>
+            <h3 className="text-neon-cyan/70 text-xs tracking-widest uppercase font-bold">{t.performanceLabel}</h3>
+            <p className="text-xl md:text-2xl font-bold tracking-wider">{t.performanceValue}</p>
             <p className="text-neon-cyan text-sm tracking-widest mt-2 border border-neon-cyan/30 bg-neon-cyan/5 px-4 py-2 self-start">
-              ABLETON LIVE + GUITARRA ELÉCTRICA
+              {t.setupSubtitle}
             </p>
           </div>
           
           <div className="flex flex-col gap-4">
-            <h3 className="text-neon-cyan/70 text-xs tracking-widest uppercase font-bold">Requerimientos</h3>
+            <h3 className="text-neon-cyan/70 text-xs tracking-widest uppercase font-bold">{t.requirementsLabel}</h3>
             <ul className="list-none space-y-4 text-sm md:text-base opacity-90">
               <li className="flex items-start gap-3">
                 <span className="text-neon-green mt-0.5">▹</span>
                 <div>
-                  <strong className="text-white tracking-wider block mb-1">Espacio:</strong>
-                  <span className="text-white/70">120cm x 60cm table surface.</span>
+                  <strong className="text-white tracking-wider block mb-1">{t.reqSpace}</strong>
+                  <span className="text-white/70">{t.reqSpaceVal}</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-neon-green mt-0.5">▹</span>
                 <div>
-                  <strong className="text-white tracking-wider block mb-1">Audio:</strong>
-                  <span className="text-white/70">2 x Salidas Mono Balanceadas (XLR/TRS).</span>
+                  <strong className="text-white tracking-wider block mb-1">{t.reqAudio}</strong>
+                  <span className="text-white/70">{t.reqAudioVal}</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-neon-green mt-0.5">▹</span>
                 <div>
-                  <strong className="text-white tracking-wider block mb-1">Alimentación:</strong>
-                  <span className="text-white/70">2 x enchufes Schuko.</span>
+                  <strong className="text-white tracking-wider block mb-1">{t.reqPower}</strong>
+                  <span className="text-white/70">{t.reqPowerVal}</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-neon-green mt-0.5">▹</span>
                 <div>
-                  <strong className="text-white tracking-wider block mb-1">Monitoreo:</strong>
-                  <span className="text-white/70">Monitor de cabina con control de volumen independiente.</span>
+                  <strong className="text-white tracking-wider block mb-1">{t.reqMonitor}</strong>
+                  <span className="text-white/70">{t.reqMonitorVal}</span>
                 </div>
               </li>
             </ul>
@@ -284,9 +359,9 @@ const LiveTerminal = () => {
       {/* SECCIÓN CONTACTO */}
       <section className="relative z-10 max-w-7xl mx-auto w-full mt-16 mb-24 flex flex-col items-center justify-center gap-6">
          <h2 className="text-3xl md:text-5xl font-bold tracking-widest text-shadow-glow">
-            BOOKING & CONTACTO<span className="text-neon-green">.</span>
+            {t.contactTitle}<span className="text-neon-green">.</span>
          </h2>
-         <p className="text-neon-cyan/70 tracking-widest text-sm text-center">Para contrataciones, colaboraciones o consultas.</p>
+         <p className="text-neon-cyan/70 tracking-widest text-sm text-center">{t.contactSubtitle}</p>
          
          <a href="mailto:francobrida@gmail.com" className="mt-4 px-8 py-4 border-2 border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black font-bold tracking-widest uppercase transition-all duration-300 relative group overflow-hidden shadow-[0_0_15px_rgba(0,245,212,0.3)] hover:shadow-[0_0_25px_rgba(0,245,212,0.6)]">
             <span className="relative z-10">francobrida@gmail.com</span>
