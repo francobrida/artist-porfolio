@@ -294,7 +294,7 @@ const LiveTerminal = () => {
          </div>
          
          {/* Hero Photo (with hologram scan & boot effect) */}
-         <div className="absolute right-0 top-0 h-full w-full md:w-[60%] flex justify-center items-end pointer-events-none overflow-hidden z-0 hero-hologram-container">
+         <div className="hero-hologram-container">
             {/* Resplandor de fondo estilo aura */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-cyan/10 blur-[100px] rounded-full pointer-events-none"></div>
             
