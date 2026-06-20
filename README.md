@@ -17,7 +17,7 @@ The application is built with a strong **Cyber-Retro** aesthetic, blending termi
 
 | Hero Section | Media Gallery & Aesthetics |
 | :---: | :---: |
-| <img src="https://via.placeholder.com/600x400.png?text=Add+Hero+Screenshot+Here" alt="Hero Section" width="100%"> | <img src="https://via.placeholder.com/600x400.png?text=Add+Gallery+Screenshot+Here" alt="Media & Aesthetic" width="100%"> |
+| <img width="1882" height="857" alt="Image" src="https://github.com/user-attachments/assets/8711cf0c-93bc-4c12-9d61-caf95ee0b039" /> | <img width="1895" height="855" alt="Image" src="https://github.com/user-attachments/assets/7fcb8439-07f4-4027-9c21-3b78bf096f16" /> |
 
 ---
 
