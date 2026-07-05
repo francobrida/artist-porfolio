@@ -378,8 +378,8 @@ const LiveTerminal = () => {
                
                <iframe 
                  className="absolute inset-0 w-full h-full z-20" 
-                 src="https://www.youtube.com/embed/7zYi_uTokKc" 
-                 title="Franco Brida - Visualizer Mix" 
+                 src="https://www.youtube.com/embed/C9UNtM3k7CI" 
+                 title="Franco Brida - Nuevo Live Set" 
                  frameBorder="0" 
                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                  referrerPolicy="strict-origin-when-cross-origin"
