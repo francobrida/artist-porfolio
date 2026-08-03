@@ -10,6 +10,7 @@ import { RevealSection } from './src/components/RevealSection';
 import { BackgroundTexture } from './src/components/BackgroundTexture';
 import { ScrollProgress } from './src/components/ScrollProgress';
 import { LanguageSelector } from './src/components/LanguageSelector';
+import { StickyNav } from './src/components/StickyNav';
 
 // Secciones
 import { HeroSection } from './src/components/sections/HeroSection';
@@ -26,11 +27,12 @@ const LiveTerminal = () => {
 
   return (
     <div className="min-h-screen bg-bg-black text-neon-cyan font-mono relative overflow-x-hidden p-4 md:p-8 flex flex-col selection:bg-neon-cyan selection:text-black pb-20">
-      
+
       {/* TEXTURAS Y EXTRAS */}
       <BackgroundTexture />
       <ScrollProgress />
       <LanguageSelector lang={lang} setLang={setLang} />
+      <StickyNav lang={lang} />
 
       {/* HERO */}
       <HeroSection t={t} />
@@ -41,13 +43,17 @@ const LiveTerminal = () => {
       </RevealSection>
 
       {/* SOBRE MÍ Y VIDEOS */}
-      <section className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 pt-12">
+      <section id="about" className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 pt-12">
         <AboutSection t={t} />
-        <VideosSection t={t} />
+        <div id="videos" className="contents">
+          <VideosSection t={t} />
+        </div>
       </section>
 
       {/* MÚSICA */}
-      <MusicSection t={t} />
+      <div id="music">
+        <MusicSection t={t} />
+      </div>
 
       {/* SEPARADOR */}
       <RevealSection className="max-w-7xl mx-auto w-full mt-8">
@@ -55,7 +61,9 @@ const LiveTerminal = () => {
       </RevealSection>
 
       {/* GALERÍA */}
-      <GallerySection />
+      <div id="gallery">
+        <GallerySection />
+      </div>
 
       {/* SEPARADOR */}
       <RevealSection className="max-w-7xl mx-auto w-full mt-16">
@@ -63,10 +71,14 @@ const LiveTerminal = () => {
       </RevealSection>
 
       {/* SETUP TÉCNICO */}
-      <SetupSection t={t} />
+      <div id="setup">
+        <SetupSection t={t} />
+      </div>
 
       {/* CONTACTO */}
-      <ContactSection t={t} />
+      <div id="contact">
+        <ContactSection t={t} />
+      </div>
 
     </div>
   );

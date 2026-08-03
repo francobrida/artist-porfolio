@@ -21,5 +21,5 @@ export const ScrollProgress = () => {
     };
   }, []);
 
-  return <div className="scroll-progress" style={{ width: `${progress}%` }} />;
+  return <div className="scroll-progress" style={{ transform: `scaleX(${progress / 100})` }} />;
 };
