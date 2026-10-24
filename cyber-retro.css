@@ -1,4 +1,4 @@
-/* 
+﻿/* 
   cyber-retro.css
   Pure CSS effects for the Terminal / CRT layout.
   Import this into your React project or include it in your HTML.
@@ -459,7 +459,7 @@ body {
 }
 
 .bio-content.expanded {
-  max-height: 600px;
+  max-height: 460px;
   opacity: 1;
   padding-top: 0.5rem;
 }
@@ -617,25 +617,22 @@ body {
 /* Hologram container for the hero image */
 .hero-hologram-container {
   position: relative;
-  height: 340px;
+  height: 380px;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-start;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
-  margin-top: 2rem;
+  /* el fundido va en el contenedor para que escaneo y scanlines se desvanezcan junto con la foto */
+  -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 45%, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 80% at 50% 45%, black 60%, transparent 100%);
 }
 
 @media (min-width: 768px) {
   .hero-hologram-container {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 60%;
-    margin-top: 0;
+    height: 460px;
   }
 }
 
@@ -868,3 +865,4 @@ body {
   background-color: #00F5D4;
   color: #000;
 }
+

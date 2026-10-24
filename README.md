@@ -1,6 +1,10 @@
 # 🎛️ Franco Brida — Live Performer Portfolio
 
 <p align="center">
+  <img width="520" alt="Franco Brida logo" src="storage/logo-franco-brida.png" />
+</p>
+
+<p align="center">
   <img width="1882" height="857" alt="Hero section of the Franco Brida portfolio" src="https://github.com/user-attachments/assets/8711cf0c-93bc-4c12-9d61-caf95ee0b039" />
 </p>
 
